@@ -1,0 +1,459 @@
+## ADAPTIVE MIXTURE OF STUDENT-T DISTRIBUTIONS AS A FLEXIBLE CANDIDATE
+## DISTRIBUTION FOR EFFICIENT SIMULATION: THE 'R' PACKAGE 'ADMIT'
+## by David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk
+## 2009, Journal of Statistical Software 29(3), pp 1-32
+## URL : http://www.jstatsoft.org/v29/i03/
+## this version : 20090105 / David Ardia <david.ardia@unifr.ch>
+
+##_____________________________________________________________________
+## SECTION 3: Illustration I: The Gelman and Meng (1991) distribution
+
+## Initialisation
+rm(list = ls())
+library("AdMit")
+options(digits = 4, max.print = 40, prompt = "R> ")
+
+## Print arguments of the 'AdMit' function
+args(AdMit)
+
+## Gelman and Meng (1991) kernel function
+GelmanMeng <- function(x, A = 1, B = 0, C1 = 3, C2 = 3, log = TRUE)
+{
+  if (is.vector(x))
+    x <- matrix(x, nrow = 1)
+  r <- -0.5 * (A * x[,1]^2 * x[,2]^2 + x[,1]^2 + x[,2]^2
+               - 2 * B * x[,1] * x[,2] - 2 * C1 * x[,1] - 2 * C2 * x[,2])
+  if (!log)
+    r <- exp(r)
+  as.vector(r)
+}
+
+## Function to plot the 'GelmanMeng' kernel function
+PlotGelmanMeng <- function(x1, x2)
+{
+  GelmanMeng(cbind(x1, x2), log = FALSE)
+}
+
+## Contour plot of the 'GelmanMeng' kernel function
+x1 <- x2 <- seq(from = -1.0, to = 6.0, by = 0.02)
+z <- outer(x1, x2, FUN = PlotGelmanMeng)
+contour(x1, x2, z, nlevel = 20, las = 1, lwd = 2,
+        col = rainbow(20), cex.axis = 1.1, cex.lab = 1.2,
+        xlab = expression(X[1]), ylab = expression(X[2]))
+abline(a = 0, b = 1, lty = "dotted")
+## Image plot of the 'GelmanMeng' kernel function
+image(x1, x2, z, las = 1, col = gray((20:0)/20),
+      cex.axis = 1.1, cex.lab = 1.2,
+      xlab = expression(X[1]), ylab = expression(X[2]))
+box()
+abline(a = 0, b = 1, lty = "dotted")
+## savePlot("GM_kernel", type = "pdf")
+
+## Run 'AdMit' on the GelmanMeng kernel function
+set.seed(1234)
+system.time( outAdMit <- AdMit(KERNEL = GelmanMeng, mu0 = c(0.0, 0.1)) )
+print(outAdMit)
+
+## Plot the mixture approximation
+PlotMit <- function(x1, x2, mit)
+{
+  dMit(cbind(x1, x2), mit = mit, log = FALSE)
+}
+
+## Contour plot of the mixture approximation obtained by 'AdMit'
+z <- outer(x1, x2, FUN = PlotMit, mit = outAdMit$mit)
+contour(x1, x2, z, nlevel = 20, las = 1, lwd = 2,
+        col = rainbow(20), cex.axis = 1.1, cex.lab = 1.2, 
+        xlab = expression(X[1]), ylab = expression(X[2]))
+abline(a = 0, b = 1, lty = "dotted")
+## Image plot of the mixture approximation obtained by 'AdMit'
+image(x1, x2, z, las = 1, col = gray((20:0)/20),
+      cex.axis = 1.1, cex.lab = 1.2, 
+      xlab = expression(X[1]), ylab = expression(X[2]))
+box()
+abline(a = 0, b = 1, lty = "dotted")
+
+## Contour plot of the four Student-t components of the mixture approximation
+par(mfrow = c(2,2))
+for (h in 1:4)
+{
+  mith <- list(p = 1,
+               mu = outAdMit$mit$mu[h,,drop = FALSE],
+               Sigma = outAdMit$mit$Sigma[h,,drop = FALSE],
+               df = outAdMit$mit$df)
+  z <- outer(x1, x2, FUN = PlotMit, mit = mith)
+  contour(x1, x2, z, las = 1, nlevel = 20, lwd = 2,
+          col = rainbow(20), cex.axis = 1.1, cex.lab = 1.2, 
+          xlab = expression(X[1]), ylab = expression(X[2]))
+  abline(a = 0, b = 1, lty = "dotted")
+  title(main = paste("component nr.", h))
+}
+## Image plot of the four Student-t components of the mixture approximation
+par(mfrow = c(2,2))
+for (h in 1:4)
+{
+  mith <- list(p = 1,
+               mu = outAdMit$mit$mu[h,,drop = FALSE],
+               Sigma = outAdMit$mit$Sigma[h,,drop = FALSE],
+               df = outAdMit$mit$df)
+  z <- outer(x1, x2, FUN = PlotMit, mit = mith)
+  image(x1, x2, z, las = 1, col = gray((20:0)/20),
+        cex.axis = 1.1, cex.lab = 1.2, 
+        xlab = expression(X[1]), ylab = expression(X[2]))
+  box()
+  abline(a = 0, b = 1, lty = "dotted")  
+  title(main = paste("component nr.", h))
+}
+
+## Print arguments of the function 'AdMitIS'
+args(AdMitIS)
+
+## Perform importance sampling using the mixture obtained with the function 'AdMit'
+system.time( outAdMitIS <- AdMitIS(KERNEL = GelmanMeng, mit = outAdMit$mit) )
+print(outAdMitIS)
+
+## Define a function used in importance sampling to compute the covariance matrix estimate
+G.cov <- function(theta, mu)
+{
+  G.cov_sub <- function(x)
+    (x - mu) %*% t(x - mu)
+
+  theta <- as.matrix(theta)
+  tmp <- apply(theta, 1, G.cov_sub)
+  if (length(mu) > 1)
+    t(tmp)
+  else
+    as.matrix(tmp)
+}
+
+## Perform importance sampling with this new function
+outAdMitIS <- AdMitIS(KERNEL = GelmanMeng, G = G.cov, mit = outAdMit$mit,
+                      mu = c(1.459, 1.459))
+print(outAdMitIS)
+V <- matrix(outAdMitIS$ghat, 2, 2)
+print(V)
+## correlation matrix corresponding to the covariance matrix
+cov2cor(V)
+
+## Print arguments of the function 'AdMitMH'
+args(AdMitMH)
+
+## Perform independence chain Metropolis-Hasting sampling using
+## the mixture obtaind with the function 'AdMit'
+outAdMitMH <- AdMitMH(KERNEL = GelmanMeng, mit = outAdMit$mit)
+print(outAdMitMH)
+
+## MCMC output (use the coda package)
+library("coda")
+draws <- as.mcmc(outAdMitMH$draws[1001:1e5,])
+colnames(draws) <- c("X1", "X2")
+## statistics
+summary(draws)$stat
+## RNE
+summary(draws)$stat[,3]^2 / summary(draws)$stat[,4]^2
+
+##_____________________________________________________________________
+## SECTION 4: Bayesian estimation of a mixture of ARCH(1) model
+
+## Initialisation
+rm(list = ls())
+options(digits = 4, max.print = 1000, prompt = "R> ")
+library("AdMit")
+
+## Define the prior density
+## The function outputs a Nx2 matrix. The first column indicates whether the
+## prior constraint is satisfied, the second returns the value of the prior
+PRIOR <- function(omega1, omega2, alpha, p, log = TRUE)
+{
+  c1 <- (omega1 > 0.0 & omega2 > 0.0 & alpha >= 0.0)   ## positivity constraint
+  c2 <- (alpha < 1.0)                                  ## stationarity constraint
+  c3 <- (p > 0.0 & p < 1.0)                            ## U(0,1) prior on p
+  c4 <- (omega1 < omega2)                              ## identification constraint
+  r1 <- c1 & c2 & c3 & c4
+  r2 <- rep.int(-Inf, length(omega1))
+  tmp <- dnorm(omega1[r1==TRUE], 0.0, 2.0, log = TRUE)       ## prior on omega1
+  tmp <- tmp + dnorm(omega2[r1==TRUE], 0.0, 2.0, log = TRUE) ## prior on omega2
+  r2[r1==TRUE] <- tmp + dnorm(alpha[r1==TRUE], 0.2, 0.5, log = TRUE) ## prior on alpha
+  if (!log)
+    r2 <- exp(r2)
+  cbind(r1, r2)
+}
+
+## Define the kernel function for the Mixture of ARCH(1) model
+## The function takes a Nx4 matrix of parameters (theta), a vector of log-returns (y)
+## theta = [omega1,omega2,alpha,p]
+## It outputs the kernel value for the N parameters
+KERNEL <- function(theta, y, log = TRUE)
+{
+  if (is.vector(theta))
+    theta <- matrix(theta, nrow = 1)
+  N <- nrow(theta)
+  
+  ## compute the prior for the parameters
+  prior <- PRIOR(theta[,1], theta[,2], theta[,3], theta[,4])
+  
+  ## the kernel function is implemented in C in order to speed up the estimation
+  d <- .C("fnKernelMixtureArch_C",
+          theta = as.double( as.vector(t(theta)) ),
+          N = as.integer(N),
+          y = as.double(y),
+          n = as.integer(length(y)),
+          prior = as.double( as.vector(t(prior)) ),
+          d = vector("double",N),
+          PACKAGE = "AdMit",
+          NAOK = TRUE,
+          DUP = FALSE)$d
+  
+  if (!log)
+    d <- exp(d)
+  as.vector(d)
+}
+
+## Here is a more trivial way to implement the KERNEL function for the same model
+## It does not require any C code, but it is slower! For a GARCH process, this
+## would be even more slow since an additional for-loop would be required
+## KERNEL <- function(theta, y, log = TRUE)
+## {
+##   if (is.vector(theta))
+##     theta <- matrix(theta, nrow = 1)
+##   N <- nrow(theta)
+##   pos <- 2:length(y) ## vector of positions used later
+##
+##   ## compute the prior for the parameters
+##   prior <- PRIOR(theta[,1], theta[,2], theta[,3], theta[,4])
+##
+##   d <- rep(-Inf, N)
+##   for (i in 1:N)
+##   { ## iterate over the parameters (rows of theta)
+##     if (prior[i,1] == TRUE)
+##     { ## if the prior is satisfied, compute the kernel
+##       h1 <- c(NA, theta[i,1] + theta[i,3] * y[pos-1]^2) ## state 1
+##       tmp1 <- -0.5 * y[pos]^2 / h1[pos] - 0.5 * log(h1[pos])
+##       h2 <- c(NA, theta[i,2] + theta[i,3] * y[pos-1]^2) ## state 2
+##       tmp2 <- -0.5 * y[pos]^2 / h2[pos] - 0.5 * log(h2[pos])
+##       tmp <- log(theta[i,4] * exp(tmp1) + (1-theta[i,4]) * exp(tmp2))
+##       d[i] <- sum(tmp) + prior[i,2] ## log-kernel
+##     }
+##   }
+##   if (!log)
+##     d <- exp(d)
+##   as.numeric(d)
+## }
+
+## Load the data set
+library("fEcofin")
+data("dem2gbp")
+y <- dem2gbp[1:250,1]
+plot(y, type = "l", las = 1, cex.axis = 1.1, cex.lab = 1.2, 
+     ylab = "log-returns", xlab = "time index")
+
+## Maximize to find the mode of the kernel function
+NLL <- function(..., log = TRUE) -KERNEL(...)
+start <- c(0.1, 0.5, 0.1, 0.5)
+outML <- optim(par = start, fn = NLL, y = y, method = "Nelder-Mead",
+               control = list(trace = 1, maxit = 5000))
+## print the mode
+round(outML$par, 4)
+
+## Then, either run the adaptive fitting, or the naive fitting below. The Griddy-Gibbs strategy
+## is defined later.
+
+## __Adaptive mixture approach___
+set.seed(1234)
+system.time( outAdMit <- AdMit(KERNEL = KERNEL, mu0 = outML$par, y = y, control = list(IS = TRUE, trace = TRUE)) )
+print(outAdMit)
+
+## ___Naive (unimodal Student-t approach) approach___
+set.seed(1234)
+system.time( outAdMit <- AdMit(KERNEL = KERNEL, mu0 = outML$par, y = y, control = list(Hmax = 1)) )
+print(outAdMit)
+
+## Then, use the output of 'AdMit' to perform importance sampling or independence MH sampling
+
+## __Importance sampling approach (for estimating the posterior mean)__
+set.seed(1234)
+outAdMitIS <- AdMitIS(N = 50000, KERNEL = KERNEL, mit = outAdMit$mit, y = y)
+print(outAdMitIS)
+
+## __Importance sampling approach (for estimating the posterior covariance matrix)__
+set.seed(1234)
+## !!! compile the G.cov function above (section 3) !!!
+outAdMitIS <- AdMitIS(N = 50000, KERNEL = KERNEL, G = G.cov, mit = outAdMit$mit, y = y, mu = outAdMitIS$ghat)
+print(outAdMitIS)
+## posterior standard deviations
+sqrt(diag(matrix(outAdMitIS$ghat, 4, 4)))
+
+## __Independence chain Metropolis-Hasting algorithm__
+set.seed(1234)
+outAdMitMH <- AdMitMH(N = 51000, KERNEL = KERNEL, mit = outAdMit$mit, y = y)
+print(outAdMitMH$accept)
+draws <- outAdMitMH$draws[1001:nrow(outAdMitMH$draws),]
+colnames(draws) <- c("omega1", "omega2", "alpha", "p")
+
+## ACF plots of the MCMC output
+par(mfrow = c(2,2))
+par(cex.axis = 1.1, cex.lab = 1.2)
+acf(draws[,"omega1"], lag.max = 30, las = 1, main = expression(omega[1]))
+acf(draws[,"omega2"], lag.max = 30, las = 1, main = expression(omega[2]))
+acf(draws[,"alpha"], lag.max = 30, las = 1, main = expression(alpha))
+acf(draws[,"p"], lag.max = 30, las = 1, main = expression(p))
+
+## ACF up to lag 10
+apply(draws, 2, acf, plot = FALSE, lag.max = 10)
+
+## use summary from package coda
+library("coda")
+draws <- as.mcmc(draws)
+summary(draws)$stat
+## RNE
+summary(draws)$stat[,3]^2 / summary(draws)$stat[,4]^2
+
+## Define function for the contour plot of the candidate
+PlotMit <- function(x1, x2, mit, log = FALSE)
+{
+  dMit(cbind(x1, x2), mit = mit, log = log)
+}
+
+x1 <- seq(from = 0.0, to = 1.5, by = 0.005)
+x2 <- seq(from = 0.0, to = 1.0, by = 0.005)
+nmit <- outAdMit$mit
+nmit$mu <- matrix(nmit$mu[, c(2,4)], nrow = length(nmit$p))
+nmit$Sigma <- matrix(nmit$Sigma[, c(6,8,14,16)], nrow = length(nmit$p))
+z <- outer(x1, x2, FUN = PlotMit, mit = nmit, log = TRUE)
+## contour plot
+contour(x1, x2, z, nlevel = 30, las = 1, lwd = 2, 
+        col = rainbow(30), cex.axis = 1.1, cex.lab = 1.2, 
+        xlab = expression(omega[2]), ylab = expression(p))
+abline(v = c(0.8, 1.0, 1.2), lwd = 2, lty = "dotted")
+abline(h = c(0.8, 0.9), lwd = 2, lty = "dotted")
+## image plot
+image(x1, x2, z, las = 1, cex.axis = 1.1, cex.lab = 1.2,
+      col = gray((20:0)/20),
+      xlim = c(0.0, 1.5), ylim = c(0.0, 1.0),
+      xlab = expression(omega[2]), ylab = expression(p))
+box()
+abline(v = c(0.8, 1.0, 1.2), lwd = 2, lty = "dotted")
+abline(h = c(0.8, 0.9), lwd = 2, lty = "dotted")
+
+## draws from the marginal distribution (omega_2,p)'
+draws <- as.matrix(draws)
+plot(draws[, c("omega2", "p")], pch = 19, cex = .7, las = 1,
+     cex.axis = 1.1, cex.lab = 1.2, 
+     xlab = expression(omega[2]), ylab = expression(p),
+     xlim = c(0.0, 1.5), ylim = c(0.0, 1.0), axes = FALSE)
+axis(side = 1, at = seq(from = 0.0, to = 1.6, by = 0.2))
+axis(side = 2, at = seq(from = 0.0, to = 1.0, by = 0.2), las = 1)
+box()
+abline(v = c(0.8, 1.0, 1.2), lwd = 2, lty = "dotted")
+abline(h = c(0.8, 0.9), lwd = 2, lty = "dotted")
+
+## ___Griddy-Gibbs approach___
+
+## Griddy-Gibbs sampling function
+fn.GriddyGibbs <- function(N)
+{
+  ## (sub) function which samples from the full conditional for omega1
+  fn.Fullomega1 <- function(omega2, alpha, p, y)
+  {
+    omega1 <- seq(from = 0.001, to = 0.25, by = 0.002)
+    theta <- cbind(omega1, omega2, alpha, p)
+    tmp <- KERNEL(theta, y)
+    sample(omega1, 1, prob = exp(tmp - max(tmp)))
+  }
+
+  ## (sub) function which samples from the full conditional for omega2
+  fn.Fullomega2 <- function(omega1, alpha, p, y)
+  {
+    omega2 <- seq(from = 0.001, to = 2.0, by = 0.01)
+    theta <- cbind(omega1, omega2, alpha, p)
+    tmp <- KERNEL(theta, y)
+    sample(omega2, 1, prob = exp(tmp - max(tmp)))
+  }
+
+  ## (sub) function which samples from the full conditional for alpha
+  fn.Fullalpha <- function(omega1, omega2, p, y)
+  {
+    alpha <- seq(from = 0.0, to = 0.99, by = 0.008)
+    theta <- cbind(omega1, omega2, alpha, p)
+    tmp <- KERNEL(theta, y)
+    sample(alpha, 1, prob = exp(tmp - max(tmp)))
+  }
+
+  ## (sub) function which samples from the full conditional for p
+  fn.Fullp <- function(omega1, omega2, alpha, y)
+  {
+    p <- seq(from = 0.0, to = 1.0, by = 0.008)
+    theta <- cbind(omega1, omega2, alpha, p)
+    tmp <- KERNEL(theta, y)
+    sample(p, 1, prob = exp(tmp - max(tmp)))
+  }
+
+  ## initialization
+  omega1 <- outML$par[1]
+  omega2 <- outML$par[2]
+  alpha <- outML$par[3]
+  p <- outML$par[4]
+  r <- matrix(NA, N, 4)
+  for (i in 1:N)
+  { ## Gibbs steps
+    omega1 <- fn.Fullomega1(omega2, alpha, p, y)
+    omega2 <- fn.Fullomega2(omega1, alpha, p, y)
+    alpha <- fn.Fullalpha(omega1, omega2, p, y)
+    p <- fn.Fullp(omega1, omega2, alpha, y)
+    r[i,] <- c(omega1, omega2, alpha, p)
+    if (i%%100 == 0) ## indicate every 100 iterations
+      cat("i=", i, "\n")
+  }
+  return(r)
+}
+
+## Run the Griddy-Gibbs
+set.seed(1234)
+system.time( draws <- fn.GriddyGibbs(N = 51000) )
+colnames(draws) <- c("omega1", "omega2", "alpha", "p")
+draws <- draws[1001:nrow(draws),]
+
+## Compute P(omega2 > omega2* | p > p*)
+r <- NULL
+iseq <- seq(from = 0.8, to = 0.9, by = 0.1) ## sequence for p
+jseq <- seq(from = 0.8, to = 1.2, by = 0.2) ## sequence for omega2
+for (i in iseq)
+{
+  tmp <- draws[,"omega2"][draws[,"p"] > i]
+  for (j in jseq)
+  {
+    x <- as.numeric(tmp>j)
+    x <- summary(as.mcmc(x))
+    r <- rbind(r, c(i, j, c(x$stat[1], x$stat[4])))
+  }
+}
+r <- round(cbind(r, cbind(r[,3] - 1.96 * r[,4], r[,3] + 1.96 * r[,4])), 4)
+dimnames(r) <- list(1:nrow(r), c("p", "omega2", "P", "NSE", "0.025", "0.975"))
+print(r)
+
+## Numerical efficiency
+delta.AdMit <- (5000 / 0.1462^2) * 0.1908
+delta.Unimodal <- (5000 / 0.1254^2) * 0.0135
+
+t <- seq(from = 0.0, to = 800, by = 0.1)
+thexlim <- c(0, max(t))
+yAdMit <- delta.AdMit * t - 420 * delta.AdMit
+yUnimodal <- delta.Unimodal * t - 20 * delta.Unimodal
+
+theylim <- c(0, 2e+7)
+plot(t[t>=420], yAdMit[t>=420], las = 1, type = "l",
+     xlim = thexlim, ylim = theylim, lwd = 2,
+     xlab = "", ylab = "", axes = FALSE)
+abline(h = 0)
+par(new = TRUE)
+par(cex.axis = 1.1, cex.lab = 1.2)
+plot(t[t>=20], yUnimodal[t>=20], las = 1, type = "l",
+     xlim = thexlim, ylim = theylim, lwd = 2, 
+     xlab = "time (sec.)", ylab = expression(1/VAR(omega[2])),
+     lty = "dashed", axes = FALSE)
+axis(1, at = seq(from = 0.0, to = 800, by = 100))
+axis(2, at = seq(from = 0.0, to = 2e+7, by = 5e+6),
+     label = seq(from = 0.0, to = 2.0, by = 0.5), las = 1)
+box()
+mtext("(x 1e7)  ", side = 2, las = 1, at = 1.9 * 1e7, cex = 1.2)
+

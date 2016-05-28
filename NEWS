@@ -1,0 +1,77 @@
+Changes in Version 2.0.2
+  o DESCRIPTION file adapted to new standard
+  o Vignette modified
+
+Changes in Version 2.0.1
+  o Compilation for new version on CRAN
+  o New email address
+  o Package's structure modified
+  o Vignette's PDF compressed
+  o Speedup of examples
+  o New version number format
+
+Changes in Version 1-01.06
+  o Speedup of computations for the examples
+
+Changes in Version 1-01.05
+  o The argument names of .C etc were changed in 2.13.0 to start with .NAME (to avoid confusion with names= in ...)
+    for back-compatibility unnamed first argument
+
+Changes in Version 1-01.04
+  o dMit and rMit modified to account of several degrees of freedom; this
+    allows MitISEM to use these functions
+
+Changes in Version 1-01.03
+
+  o documentation file modified
+  o CITATION file modified
+
+Changes in Version 1-01.02
+
+  o CITATION file modified
+
+Changes in Version 1-01.01
+
+  o change in AdMit.R to deal with convergence problems for simple cases.
+
+  o documentation and codes modified according to JSS style.
+
+  o creation of /doc folder with AdMitJSS.txt and AdMitRnews.txt files.
+
+  o package vignette added (in /doc).
+
+  o CITATION file simplified.
+  
+  o JSS paper accepted for publication.
+  
+  o Rnews paper accepted for publication.
+
+
+Changes in Version 1-00.04
+
+  o file AdMitJSS.txt containing the code of the JSS paper is part of the package.
+
+  o documentation of AdMit enhanced (explanations for KERNEL construction).
+
+  o add reference for Gelman-Meng.
+
+  o modify references in CITATION.
+
+  o new 'demo' code.
+
+  o 'coda' package is now Suggests.
+
+
+Changes in Version 1-00.03
+
+  o change the version in the function 'onLoad'.
+
+
+Changes in Version 1-00.02
+
+  o first version released.
+    
+
+Changes in Version 1-00.01
+
+  o previous versions were 'under construction' versions.
