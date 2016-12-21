@@ -1,6 +1,6 @@
 ---
 title: 'AdMit: Adaptive mixture of Student-t distributions in R'
-bibliography: AdMit.bib
+bibliography: paper.bib
 date: "21 December 2016"
 tags:
 - adaptive mixture
