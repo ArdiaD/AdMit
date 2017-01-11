@@ -33,4 +33,3 @@ void fnKernelMixtureArch_C(double *theta, int*N, double *y, int *n, double *prio
 	}
     }
 }
-

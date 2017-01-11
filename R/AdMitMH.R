@@ -28,12 +28,11 @@
             N = as.integer(N),
             k = as.integer(k),
             lnw = as.double(lnw),
-            u = as.double(runif(N)),
+            u = as.double(stats::runif(N)),
             draws = vector('double',N*k),
             ns = as.integer(0),
             PACKAGE = 'AdMit',
-            NAOK = TRUE,
-            DUP = FALSE)
+            NAOK = TRUE)
 
     draws <- matrix(r$draws, N, k, byrow=TRUE)
     dimnames(draws) <- list(1:N, paste("k", 1:k, sep=""))

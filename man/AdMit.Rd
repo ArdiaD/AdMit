@@ -262,8 +262,7 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
   Possibly Ill-Behaved Posteriors in Econometric Models: On the Connection between Model
   Structures, Non-elliptical Credible Sets and Neural Network
   Simulation Techniques. 
-  \emph{Tinbergen Institute discussion paper} \bold{2008-036/4}. 
-  \url{http://www.tinbergen.nl/discussionpapers/08036.pdf}
+  \emph{Tinbergen Institute discussion paper} \bold{2008-036/4}.
 }
 \seealso{%
   \code{\link{AdMitIS}} for importance sampling using an

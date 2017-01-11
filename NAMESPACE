@@ -3,4 +3,7 @@ export(AdMitIS)
 export(AdMitMH)
 export(dMit)
 export(rMit)
+importFrom("stats", "nlminb", "optim", "runif", "sd")
+import(mvtnorm)
 useDynLib(AdMit)
+

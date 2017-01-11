@@ -41,5 +41,3 @@ void fnMH_C(double *theta, int *N, int *k, double *lnw, double *u, double *draws
 	draws[m+j] = tmp[j];
     }
 }
-
-

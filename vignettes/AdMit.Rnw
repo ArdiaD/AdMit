@@ -51,8 +51,8 @@
 %% TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{David Ardia\\Laval University \And
-        Lennart F. Hoogerheide\\Erasmus University \And
+\author{David Ardia\\University of Neuch\^atel\\ Laval University\And
+        Lennart F. Hoogerheide\\Vrije Universit\"at Amsterdam\And
         Herman K. van Dijk\\Erasmus University}
 \Plainauthor{David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk}
 
@@ -84,10 +84,9 @@ chain Metropolis-Hastings algorithm, Bayesian inference, R software}
 
 \Address{
   David Ardia\\
-  Finance, Insurance and Real Estate\\
-  Laval University, Québec (Québec), Canada\\
-  E-mail: \email{david.ardia@fsa.ulaval.ca}\\
-  URL: \url{http://perso.unifr.ch/david.ardia/}
+  University of Neuch\^atel, Switzerland
+  Laval University, Qu\'bec (Qu\'bec), Canada\\
+  E-mail: \email{david.ardia.ch@gmail.com}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +94,7 @@ chain Metropolis-Hastings algorithm, Bayesian inference, R software}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \SweaveOpts{engine=R,eps=FALSE}
 %\VignetteIndexEntry{Adaptive Mixture of Student-t Distributions for Efficient Simulation}

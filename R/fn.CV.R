@@ -7,7 +7,7 @@
 ## __20080429__
 'fn.CV' <- function(w)
   {
-    r <- sd(w)
+    r <- stats::sd(w)
     if (r==0)
       stop ("'w' is constant in 'fn.CV'")
     as.numeric(r/mean(w))

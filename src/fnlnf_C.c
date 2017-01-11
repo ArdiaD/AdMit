@@ -1,4 +1,4 @@
-/* Function which computes the value of the objective function 
+/* Function which computes the value of the objective function
    and the gradient of the objective function for the optimization of the
    probabilities 
 */

@@ -11,6 +11,6 @@
 'fn.dmvt' <- function(x, mu, Sigma, df, log)
   {
     k <- length(mu)
-    r <- dmvt(as.matrix(x), as.vector(mu), matrix(Sigma,k,k), df, log)
+    r <- mvtnorm::dmvt(as.matrix(x), as.vector(mu), matrix(Sigma,k,k), df, log)
     as.vector(r)
   }

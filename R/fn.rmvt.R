@@ -10,6 +10,6 @@
 'fn.rmvt' <- function(N, mu, Sigma, df)
   {
     k <- length(mu)
-    r <- matrix(mu, N, k, byrow=TRUE) + rmvt(N, matrix(Sigma,k,k), df)
+    r <- matrix(mu, N, k, byrow=TRUE) + mvtnorm::rmvt(N, matrix(Sigma,k,k), df)
     as.matrix(r)
   }
