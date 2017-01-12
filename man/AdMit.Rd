@@ -233,7 +233,7 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009a).
   AdMit: Adaptive Mixture of Student-t Distributions.
   \emph{The R Journal} \bold{1}(1), pp.25--30.
-  \url{http://journal.r-project.org/2009-1/}
+  \url{https://journal.r-project.org/archive/2009-1/}
 
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009b).
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate
@@ -255,7 +255,7 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
   On the Shape of Posterior Densities and Credible Sets in Instrumental Variable Regression Models with Reduced
   Rank: An Application of Flexible Sampling Methods using Neural Networks.
   \emph{Journal of Econometrics} \bold{139}(1), pp.154--180. 
-  doi: 10.1016/j.jeconom.2006.06.009.
+  \doi{10.1016/j.jeconom.2006.06.009}
 
   Hoogerheide, L.F., van Dijk, H.K. (2008). 
   Possibly Ill-Behaved Posteriors in Econometric Models: On the Connection between Model
