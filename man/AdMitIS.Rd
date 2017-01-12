@@ -76,9 +76,8 @@ AdMitIS(N = 1e5, KERNEL, G = function(theta){theta}, mit = list(), ...)
 \note{%
   Further details and examples of the \R package \code{AdMit}
   can be found in Ardia, Hoogerheide, van Dijk (2009a,b). See also
-  the package vignette by typing \code{vignette("AdMit")} and the
-  files \file{AdMitJSS.txt} and \file{AdMitRnews.txt} in the \file{/doc} package's folder.
-  
+  the package vignette by typing \code{vignette("AdMit")}.
+
   Further information on importance sampling can be found
   in Geweke (1989) or Koop (2003).
 

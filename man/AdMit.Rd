@@ -211,8 +211,7 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
 \note{%
   Further details and examples of the \R package \code{AdMit}
   can be found in Ardia, Hoogerheide, van Dijk (2009a,b). See also
-  the package vignette by typing \code{vignette("AdMit")} and the
-  files \file{AdMitJSS.txt} and \file{AdMitRnews.txt} in the \file{/doc} package's folder.
+  the package vignette by typing \code{vignette("AdMit")}.
 
   Further details on the core algorithm are given in
   Hoogerheide (2006), Hoogerheide, Kaashoek, van Dijk (2007) and

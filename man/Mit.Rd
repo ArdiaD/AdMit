@@ -55,9 +55,8 @@ rMit(N = 1, mit = list())
 \note{%
   Further details and examples of the \R package \code{AdMit}
   can be found in Ardia, Hoogerheide, van Dijk (2009a,b). See also
-  the package vignette by typing \code{vignette("AdMit")} and the
-  files \file{AdMitJSS.txt} and \file{AdMitRnews.txt} in the \file{/doc} package's folder.
-  
+  the package vignette by typing \code{vignette("AdMit")}.
+
   Please cite the package in publications. Use \code{citation("AdMit")}.
 }
 \author{David Ardia}

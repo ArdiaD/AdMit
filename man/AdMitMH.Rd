@@ -58,8 +58,7 @@ AdMitMH(N = 1e5, KERNEL, mit = list(), ...)
 \note{%
   Further details and examples of the \R package \code{AdMit}
   can be found in Ardia, Hoogerheide and van Dijk (2009a,b). See also
-  the package vignette by typing \code{vignette("AdMit")} and the
-  files \file{AdMitJSS.txt} and \file{AdMitRnews.txt} in the \file{/doc} package's folder.
+  the package vignette by typing \code{vignette("AdMit")}.
 
   Further information on the Metropolis-Hastings algorithm can be found
   in Chib and Greenberg (1995) and Koop (2003).
