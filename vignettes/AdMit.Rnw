@@ -1,7 +1,7 @@
 \documentclass[nojss,shortnames]{jss}
 \usepackage{amsmath,amssymb}
 \usepackage{xspace}
-%% need no \usepackage{Sweave}
+\usepackage{Sweave}
 
 %% general
 \providecommand{\AdMit}{\pkg{AdMit}\xspace}

@@ -1,3 +1,9 @@
+Changes in Version 2.1.2
+  o fix vignette
+
+Changes in Version 2.1.1
+  o Info added in DESCRIPTION
+
 Changes in Version 2.1.0
   o Preparation for new release on CRAN
 

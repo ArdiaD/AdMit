@@ -29,12 +29,14 @@ citEntry(entry = "article",
          number = "3",
 	 pages = "1-32",
          url = "http://www.jstatsoft.org/v29/i03/",
+         doi = "10.18637/jss.v029.i03",
 	 textVersion =
          paste("David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk (2009).",
                "Adaptive Mixture of Student-t Distribution as a Flexible Candidate Distribution for 
                 Efficient Simulation: The 'R' package 'AdMit'.",
                "Journal of Statistical Software 29(3).",
-               "URL http://www.jstatsoft.org/v29/i03/.")
+               "URL http://www.jstatsoft.org/v29/i03/.",
+               "DOI 10.18637/jss.v029.i03.")
 )
 
 citEntry(entry = "article",

@@ -239,7 +239,7 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate
   Distribution for Efficient Simulation: The R Package AdMit.
   \emph{Journal of Statistical Software} \bold{29}(3), pp.1--32.
-  \url{http://www.jstatsoft.org/v29/i03/}
+  \doi{10.18637/jss.v029.i03}
 
   Gelman, A., Meng, X.-L. (1991). 
   A Note on Bivariate Distributions That Are Conditionally Normal. 

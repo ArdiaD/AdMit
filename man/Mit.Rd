@@ -70,7 +70,7 @@ Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009a).
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate
   Distribution for Efficient Simulation: The R Package AdMit.
   \emph{Journal of Statistical Software} \bold{29}(3), pp.1--32.
-  \url{http://www.jstatsoft.org/v29/i03/}
+  \doi{10.18637/jss.v029.i03}
 }
 \seealso{%
   \code{\link{AdMit}} for fitting an adaptive mixture of
