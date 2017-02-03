@@ -1,12 +1,12 @@
 # AdMit
-Adaptive Mixture of Student-t distributions
+Adaptive mixture of Student-t distributions
 
 [![DOI](https://zenodo.org/badge/59887530.svg)](https://zenodo.org/badge/latestdoi/59887530)
 [![CRAN](http://www.r-pkg.org/badges/version/AdMit)](https://cran.r-project.org/package=AdMit) 
 [![Downloads](http://cranlogs.r-pkg.org/badges/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
 
-AdMit ([Ardia et al. (2009a)](http://dx.doi.org/10.18637/jss.v029.i03)) is an R package which provides 
+`AdMit` ([Ardia et al. (2009a)](http://dx.doi.org/10.18637/jss.v029.i03)) is an R package which provides 
 flexible functions to approximate a certain target distribution and to efficiently generate a sample of 
 random draws from it, given only a kernel of the target density function. The core 
 algorithm fits an adaptive mixture of Student-t distributions to the density of interest, and then, 
