@@ -41,5 +41,5 @@ citEntry(entry = "article",
          paste("David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk (2009).",
                "'AdMit': Adaptive Mixture of Student-t Distribution.",
                "The R Journal 1(1).",
-               "url:http://journal.r-project.org/archive/2009-1/")
+               "url:https://journal.r-project.org/archive/2009-1/")
 )

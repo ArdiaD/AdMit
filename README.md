@@ -28,4 +28,4 @@ _Journal of Statistical Software_ **29**(3), pp.1-32.
 Ardia, D., Hoogerheide, L., van Dijk, H.K. (2009b).    
 AdMit: Adaptive mixture of Student-t distributions.   
 _R Journal_ **1**(1), pp.25-30.     
-[http://journal.r-project.org/archive/2009-1/](http://journal.r-project.org/archive/2009-1/)  
+[https://journal.r-project.org/archive/2009-1/](https://journal.r-project.org/archive/2009-1/)  
