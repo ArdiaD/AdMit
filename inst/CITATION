@@ -4,22 +4,9 @@ vers <- paste("version", meta$Version)
 
 citHeader("To cite 'AdMit' in publications use:")
 
-citEntry(entry = "manual",
-	 title = "{AdMit}: Adaptive Mixture of Student-$t$ Distributions in {R}",
-	 author = personList(person("David","Ardia"),
-                             person("Lennart","Hoogerheide","F."),
-                             person("Herman","van Dijk","K.")),
-     year = year,
-	 note = vers,
-	 url = "https://CRAN.R-project.org/package=AdMit",
-	 textVersion =
-         paste("David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk (", year,"). ",
-               "'AdMit': Adaptive Mixture of Student-t Distributions in 'R'. ", vers, ".", sep = "")
-)
-
 citEntry(entry = "article",
-	 title = "Adaptive Mixture of Student-$t$ Distributions as a Flexible Candidate Distribution for
-         Efficient Simulation: The {R} Package {AdMit}",
+	 title = "Adaptive mixture of Student-$t$ distributions as a flexible candidate distribution for
+         efficient simulation: The {R} package {AdMit}",
 	 author = personList(person("David","Ardia"),
                              person("Lennart","Hoogerheide","F."),
                              person("Herman","van Dijk","K.")),
@@ -32,15 +19,15 @@ citEntry(entry = "article",
          doi = "10.18637/jss.v029.i03",
 	 textVersion =
          paste("David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk (2009).",
-               "Adaptive Mixture of Student-t Distribution as a Flexible Candidate Distribution for 
-                Efficient Simulation: The 'R' package 'AdMit'.",
+               "Adaptive mixture of Student-t distribution as a flexible candidate distribution for 
+                efficient simulation: The 'R' package 'AdMit'.",
                "Journal of Statistical Software 29(3).",
-               "URL http://www.jstatsoft.org/v29/i03/.",
-               "DOI 10.18637/jss.v029.i03.")
+               "url:http://www.jstatsoft.org/v29/i03/",
+               "doi:10.18637/jss.v029.i03")
 )
 
 citEntry(entry = "article",
-	 title = "{AdMit}: Adaptive Mixture of Student-$t$ Distributions",
+	 title = "{AdMit}: Adaptive mixture of Student-$t$ distributions",
 	 author = personList(person("David","Ardia"),
                              person("Lennart","Hoogerheide","F."),
                              person("Herman","van Dijk","K.")),
@@ -48,11 +35,11 @@ citEntry(entry = "article",
          year = "2009",
          volume = "1",
          number = "1",
-	 pages = "25-30",
+	       pages = "25-30",
          url = "https://journal.r-project.org/archive/2009-1/",
          textVersion = 
          paste("David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk (2009).",
                "'AdMit': Adaptive Mixture of Student-t Distribution.",
                "The R Journal 1(1).",
-               "URL http://journal.r-project.org/archive/2009-1/.")
+               "url:http://journal.r-project.org/archive/2009-1/")
 )

@@ -87,18 +87,18 @@ AdMitIS(N = 1e5, KERNEL, G = function(theta){theta}, mit = list(), ...)
 \references{%
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009a).
   AdMit: Adaptive Mixture of Student-t Distributions.
-  \emph{The R Journal} \bold{1}(1), pp.25--30.
+  \emph{The R Journal} \bold{1}(1), pp.25-30.
   \url{https://journal.r-project.org/archive/2009-1/}
 
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009b).
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate
   Distribution for Efficient Simulation: The R Package AdMit.
-  \emph{Journal of Statistical Software} \bold{29}(3), pp.1--32.
+  \emph{Journal of Statistical Software} \bold{29}(3), pp.1-32.
   \doi{10.18637/jss.v029.i03}
 
   Geweke, J.F. (1989).
   Bayesian Inference in Econometric Models Using Monte Carlo Integration.
-  \emph{Econometrica} \bold{57}(6), pp.1317--1339. 
+  \emph{Econometrica} \bold{57}(6), pp.1317-1339. 
 
   Koop, G. (2003). 
   \emph{Bayesian Econometrics}. 

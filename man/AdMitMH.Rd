@@ -69,18 +69,18 @@ AdMitMH(N = 1e5, KERNEL, mit = list(), ...)
 \references{%
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009a).
   AdMit: Adaptive Mixture of Student-t Distributions.
-  \emph{The R Journal} \bold{1}(1), pp.25--30.
+  \emph{The R Journal} \bold{1}(1), pp.25-30.
   \url{https://journal.r-project.org/archive/2009-1/}
 
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009b).
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate
   Distribution for Efficient Simulation: The R Package AdMit.
-  \emph{Journal of Statistical Software} \bold{29}(3), pp.1--32.
+  \emph{Journal of Statistical Software} \bold{29}(3), pp.1-32.
   \doi{10.18637/jss.v029.i03}
 
   Chib, S., Greenberg, E. (1995). 
   Understanding the Metropolis-Hasting Algorithm. 
-  \emph{The American Statistician} \bold{49}(4), pp.327--335.
+  \emph{The American Statistician} \bold{49}(4), pp.327-335.
 
   Koop, G. (2003). 
   \emph{Bayesian Econometrics}. 

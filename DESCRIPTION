@@ -1,6 +1,6 @@
 Package: AdMit
-Version: 2.1.2
-Date: 2017-01-17
+Version: 2.1.3
+Date: 2017-02-04
 Title: Adaptive Mixture of Student-t Distributions
 Authors@R: c(person("David", "Ardia", role = c("aut", "cre"),
              email = "david.ardia.ch@gmail.com"),
