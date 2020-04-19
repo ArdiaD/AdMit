@@ -2,8 +2,6 @@
 [![CRAN](http://www.r-pkg.org/badges/version/AdMit)](https://cran.r-project.org/package=AdMit) 
 [![Downloads](http://cranlogs.r-pkg.org/badges/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
-[![Pending Pull-Requests](http://githubbadges.herokuapp.com/ArdiaD/AdMit/pulls.svg?style=flat)](https://github.com/ArdiaD/AdMit/pulls)
-[![Github Issues](http://githubbadges.herokuapp.com/ArdiaD/AdMit/issues.svg)](https://github.com/ArdiaD/AdMit/issues)
 
 `AdMit` ([Ardia et al., 2009a](https://doi.org/10.18637/jss.v029.i03)) is an R package which provides 
 flexible functions to approximate a certain target distribution and to efficiently generate a sample of 
