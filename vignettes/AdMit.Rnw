@@ -51,7 +51,7 @@
 %% TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{David Ardia\\University of Neuch\^atel\\ Laval University\And
+\author{David Ardia\\HEC Montreal\And
         Lennart F. Hoogerheide\\Vrije Universit\"at Amsterdam\And
         Herman K. van Dijk\\Erasmus University}
 \Plainauthor{David Ardia, Lennart F. Hoogerheide, Herman K. van Dijk}
@@ -84,8 +84,8 @@ chain Metropolis-Hastings algorithm, Bayesian inference, R software}
 
 \Address{
   David Ardia\\
-  University of Neuch\^atel, Switzerland
-  Laval University, Qu\'bec (Qu\'bec), Canada\\
+  Departement of Decision Sciences\\
+  HEC Montreal, Canada\\
   E-mail: \email{david.ardia.ch@gmail.com}
 }
 

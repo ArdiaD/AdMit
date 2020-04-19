@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^Contributing.md$
 paper/
+.git
+.gitignore
