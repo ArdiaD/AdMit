@@ -25,10 +25,10 @@ By using `AdMit` you agree to the following rules:
 Ardia, D., Hoogerheide, L., van Dijk, H.K. (2009a).    
 Adaptive mixture of Student-t distributions as a flexible candidate 
 distribution for efficient simulation: The R package AdMit.    
-_Journal of Statistical Software_ **29**(3), pp.1-32.     
+_Journal of Statistical Software_, 29(3), 1-32.     
 [https://doi.org/10.18637/jss.v029.i03](https://doi.org/10.18637/jss.v029.i03)  
 
 Ardia, D., Hoogerheide, L., van Dijk, H.K. (2009b).    
 AdMit: Adaptive mixture of Student-t distributions.   
-_R Journal_ **1**(1), pp.25-30.     
+_R Journal_, 1(1), 25-30.     
 [https://doi.org/10.32614/RJ-2009-003](https://doi.org/10.32614/RJ-2009-003)  
