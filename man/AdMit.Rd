@@ -209,8 +209,14 @@ AdMit(KERNEL, mu0, Sigma0 = NULL, control = list(), ...)
   sampling weights.  
 }
 \note{%
+By using \code{AdMit} you agree to the following rules:
+\itemize{
+\item You must cite Ardia et al. (2009a,b) in working papers and published papers that use \code{AdMit}. Use \code{citation("AdMit")}.
+\item You must place the following URL in a footnote to help others find \code{AdMit}: \url{https://CRAN.R-project.org/package=AdMit}. 
+\item You assume all risk for the use of \code{AdMit}.
+}
   Further details and examples of the \R package \code{AdMit}
-  can be found in Ardia, Hoogerheide, van Dijk (2009a,b). See also
+  can be found in Ardia et al. (2009a,b). See also
   the package vignette by typing \code{vignette("AdMit")}.
 
   Further details on the core algorithm are given in
