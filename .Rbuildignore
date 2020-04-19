@@ -4,3 +4,4 @@
 paper/
 .git
 .gitignore
+bin
