@@ -18,7 +18,7 @@ Full description of the algorithm and numerous applications are available in [Ar
 By using `AdMit` you agree to the following rules: 
 
 1) You must cite [Ardia et al. (2009a)](https://doi.org/10.18637/jss.v029.i03) in working papers and published papers that use `AdMit`.
-2) You must place the following URL in a footnote to help others find `AdMit`: https://CRAN.R-project.org/package=AdMit. 
+2) You must place the following URL in a footnote to help others find `AdMit`: [https://CRAN.R-project.org/package=AdMit](https://CRAN.R-project.org/package=AdMit). 
 3) You assume all risk for the use of `AdMit`.
 
 Ardia, D., Hoogerheide, L., van Dijk, H.K. (2009a).    
