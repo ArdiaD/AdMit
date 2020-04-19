@@ -1,4 +1,5 @@
 # AdMit
+[![JSS](https://img.shields.io/badge/JSS-10.18637%2Fjss.v029.i03-brightgreen)](https://doi.org/10.18637/jss.v029.i03)
 [![CRAN](http://www.r-pkg.org/badges/version/AdMit)](https://cran.r-project.org/package=AdMit) 
 [![Downloads](http://cranlogs.r-pkg.org/badges/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/AdMit?color=brightgreen)](http://www.r-pkg.org/pkg/AdMit)
