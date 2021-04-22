@@ -70,7 +70,7 @@ AdMitMH(N = 1e5, KERNEL, mit = list(), ...)
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009a).
   AdMit: Adaptive Mixture of Student-t Distributions.
   \emph{The R Journal} \bold{1}(1), pp.25-30.
-  \url{https://journal.R-project.org/archive/2009-1/}
+  \doi{10.32614/RJ-2009-003}
 
   Ardia, D., Hoogerheide, L.F., van Dijk, H.K. (2009b).
   Adaptive Mixture of Student-t Distributions as a Flexible Candidate

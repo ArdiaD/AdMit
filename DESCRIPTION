@@ -1,16 +1,14 @@
 Package: AdMit
-Version: 2.1.5
-Date: 2020-04-20
+Version: 2.1.7
+Date: 2021-04-30
 Title: Adaptive Mixture of Student-t Distributions
 Authors@R: c(person("David", "Ardia", role = c("aut", "cre", "cph"),
              email = "david.ardia.ch@gmail.com", comment = c(ORCID = "0000-0003-2823-782X")),
              person("Lennart", "Hoogerheide", role = "ctb"),
              person("Herman", "van Dijk", role = "ctb"))
 Maintainer: David Ardia <david.ardia.ch@gmail.com>
-Depends:
-    mvtnorm
-Suggests:
-    coda
+Depends: mvtnorm
+Suggests: coda
 Description: Provides functions to perform the fitting of an adaptive mixture
     of Student-t distributions to a target density through its kernel function as described in
     Ardia et al. (2009) <doi:10.18637/jss.v029.i03>. The
@@ -19,5 +17,6 @@ Description: Provides functions to perform the fitting of an adaptive mixture
     obtain quantities of interest for the target density itself. 
 BugReports: https://github.com/ArdiaD/AdMit/issues
 URL: https://github.com/ArdiaD/AdMit
-License: GPL (>=2)
+License: GPL (>= 2)
 RoxygenNote: 5.0.1
+NeedsCompilation: yes

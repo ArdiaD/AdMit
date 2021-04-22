@@ -5,5 +5,4 @@ export(dMit)
 export(rMit)
 importFrom("stats", "nlminb", "optim", "runif", "sd")
 import(mvtnorm)
-useDynLib(AdMit)
-
+useDynLib(AdMit, .registration = TRUE)
