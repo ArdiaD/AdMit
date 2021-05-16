@@ -216,8 +216,7 @@ By using \code{AdMit} you agree to the following rules:
 \item You assume all risk for the use of \code{AdMit}.
 }
   Further details and examples of the \R package \code{AdMit}
-  can be found in Ardia et al. (2009a,b). See also
-  the package vignette by typing \code{vignette("AdMit")}.
+  can be found in Ardia et al. (2009a,b). 
 
   Further details on the core algorithm are given in
   Hoogerheide (2006), Hoogerheide, Kaashoek, van Dijk (2007) and
@@ -228,8 +227,6 @@ By using \code{AdMit} you agree to the following rules:
   \code{mit} as the importance density or by the function \code{\link{AdMitMH}} to perform
   independence chain Metropolis-Hastings sampling using \code{mit} as the
   candidate density.
-
-  Please cite the package in publications. Use \code{citation("AdMit")}.
 }
 \author{%
   David Ardia for the \R port,
